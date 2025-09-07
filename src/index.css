@@ -1,0 +1,295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Medical Blue Theme */
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    /* Medical Blue Primary */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Healing Green Secondary */
+    --secondary: 158 64% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Soft Gray Muted */
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Trust Orange Accent */
+    --accent: 43 96% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    /* Custom Medical Theme Colors */
+    --medical-blue: 217 91% 60%;
+    --medical-blue-light: 217 91% 95%;
+    --medical-green: 158 64% 52%;
+    --medical-green-light: 158 64% 95%;
+    --trust-orange: 43 96% 56%;
+    --trust-orange-light: 43 96% 95%;
+    --medical-purple: 270 95% 60%;
+    --medical-purple-light: 270 95% 95%;
+    --medical-teal: 180 90% 45%;
+    --medical-teal-light: 180 90% 95%;
+    --medical-rose: 340 90% 55%;
+    --medical-rose-light: 340 90% 95%;
+    
+    /* Gradients */
+    --gradient-medical: linear-gradient(135deg, hsl(var(--medical-blue)), hsl(var(--medical-green)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--medical-blue)) 0%, hsl(var(--medical-blue) / 0.8) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+    
+    /* Shadows */
+    --shadow-medical: 0 10px 30px -10px hsl(var(--medical-blue) / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--foreground) / 0.1);
+    --shadow-card: 0 2px 10px -2px hsl(var(--foreground) / 0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 28% 17%;
+    --foreground: 210 40% 98%;
+
+    --card: 215 28% 17%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 28% 17%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 158 64% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 28% 25%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 43 96% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 28% 25%;
+    --input: 215 28% 25%;
+    --ring: 217 91% 60%;
+
+    /* Dark mode medical colors */
+    --medical-blue: 217 91% 60%;
+    --medical-blue-light: 217 91% 25%;
+    --medical-green: 158 64% 52%;
+    --medical-green-light: 158 64% 25%;
+    --trust-orange: 43 96% 56%;
+    --trust-orange-light: 43 96% 25%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/40;
+  }
+}
+
+@layer components {
+  /* Gradient backgrounds */
+  .bg-gradient-medical {
+    background: var(--gradient-medical);
+  }
+  
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  /* Custom shadows */
+  .shadow-medical {
+    box-shadow: var(--shadow-medical);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Animated elements */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient 8s linear infinite;
+  }
+
+  .bg-grid-pattern {
+    background-size: 20px 20px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                     linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
